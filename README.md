@@ -38,7 +38,6 @@ Status Codes
 | Filter     |                     | Description |
 |------------|---------------------|-------------|
 | Radius     | `filter_radius`     | Radius in kilometers around the home coordinates in which events from feed are included. |
-| Categories | `filter_categories` | Array of category names. Only events with a category matching any of these is included. |
 
 **Example**
 ```python
@@ -74,7 +73,6 @@ Each feed entry is populated with the following properties:
 | title              | Title of this entry.                                                                                | `title`        |
 | attribution        | Attribution of the feed.                                                                            | n/a            |
 | distance_to_home   | Distance in km of this entry to the home coordinates.                                               | n/a            |
-| category           | The alert level of the incident ('Emergency Warning', 'Watch and Act', 'Advice','Not Applicable').  | `category`     |
 | publication_date   | The publication date of the incidents.                                                              | `pubDate`      |
 
 
