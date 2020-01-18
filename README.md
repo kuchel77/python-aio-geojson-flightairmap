@@ -1,4 +1,4 @@
-# python-aio-geojson-nsw-rfs-incidents
+# python-aio-geojson-flightairmap
 
 [![Build Status](https://travis-ci.org/kuchel77/python-aio-geojson-flighairmap.svg)](https://travis-ci.org/kuchel77/python-aio-geojson-flightairmap)
 [![Coverage Status](https://coveralls.io/repos/github/kuchel77/python-aio-geojson-flightairmap/badge.svg?branch=master)](https://coveralls.io/github/exxamalte/python-aio-geojson-flightairmap?branch=master)
