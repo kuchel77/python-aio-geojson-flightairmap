@@ -5,7 +5,7 @@ from typing import Optional
 from aio_geojson_client.feed import GeoJsonFeed
 from aiohttp import ClientSession
 
-from feed_entry import FlightAirMapFeedEntry
+from .feed_entry import FlightAirMapFeedEntry
 
 _LOGGER = logging.getLogger(__name__)
 

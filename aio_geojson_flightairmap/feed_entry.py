@@ -9,12 +9,12 @@ import re
 from typing import Optional
 from aio_geojson_client.feed_entry import FeedEntry
 
-from consts import ATTR_FLIGHT_CODE, ATTR_AIRCRAFT_REGISTRATION, ATTR_AIRCRAFT_TYPE, ATTR_DEPARTURE_AIRPORT, ATTR_ARRIVAL_AIRPORT, ATTR_ID 
+import consts
 
 _LOGGER = logging.getLogger(__name__)
 
 class FlightAirMapFeedEntry(FeedEntry):
-    """NSW Rural Fire Service Incidents feed entry."""
+    """Flight Air Map Incidents feed entry."""
 
     def __init__(self, home_coordinates, feature):
         """Initialise this service."""
