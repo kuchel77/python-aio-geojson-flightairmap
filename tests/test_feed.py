@@ -6,7 +6,6 @@ import pytest
 
 from aio_geojson_client.consts import UPDATE_OK
 
-from aio_geojson_flightairmap.consts import ATTRIBUTION
 from aio_geojson_flightairmap.feed import FlightAirMapFeed
 from tests.utils import load_fixture
 
@@ -25,17 +24,16 @@ async def test_update_ok(aresponses, event_loop):
     )
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
-
-        feed = FlightAirMapFeed(websession, home_coordinates)
+        feed = FlightAirMapFeed(websession, "http://192.160.0.200/FlightAirMap/live/geojson", home_coordinates,20000)
         assert repr(feed) == "<FlightAirMapFeed" \
-                             "home=(-31.0, 151.0), url=http://" \
+                             "(home=(-31.0, 151.0), url=http://" \
                              "192.160.0.200" \
                              "/FlightAirMap/live/geojson, " \
-                             "radius=None)>)>"
+                             "radius=20000)>"
         status, entries = await feed.update()
         assert status == UPDATE_OK
         assert entries is not None
-        assert len(entries) == 3
+        assert len(entries) == 4
 
 
 @pytest.mark.asyncio
@@ -53,11 +51,11 @@ async def test_empty_feed(aresponses, event_loop):
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
 
-        feed = FlightAirMapFeed(websession, home_coordinates)
+        feed = FlightAirMapFeed(websession, url="http://192.168.0.200/FlightAirMap/live/geojson", home_coordinates=home_coordinates)
         assert repr(feed) == "<FlightAirMapFeed(" \
                              "home=(-41.2, 174.7), " \
                              "url=http://192.168.0.200" \
-                             "/live/geojson, " \
+                             "/FlightAirMap/live/geojson, " \
                              "radius=None)>"
         status, entries = await feed.update()
         assert status == UPDATE_OK

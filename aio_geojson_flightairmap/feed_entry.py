@@ -1,4 +1,4 @@
-"""NSW Rural Fire Service Incidents feed entry."""
+"""Flight Air Map feed entry."""
 import pytz
 import calendar
 from datetime import datetime
@@ -9,7 +9,7 @@ import re
 from typing import Optional
 from aio_geojson_client.feed_entry import FeedEntry
 
-import consts
+import aio_geojson_flightairmap.consts
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ class FlightAirMapFeedEntry(FeedEntry):
 
     @property
     def aircraft_registration(self) -> str:
-        """Return the category of this entry."""
+        """Return the y of this entry."""
         return self._search_in_properties(ATTR_AIRCRAFT_REGISTRATION)
 
     @property
@@ -47,7 +47,7 @@ class FlightAirMapFeedEntry(FeedEntry):
 
     @property
     def departure_airport(self) -> str:
-        """Return the category of this entry."""
+        """Return the y of this entry."""
         return self._search_in_properties(ATTR_DEPARTURE_AIRPORT)
 
     @property

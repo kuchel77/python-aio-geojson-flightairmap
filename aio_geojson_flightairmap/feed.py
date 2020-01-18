@@ -1,4 +1,4 @@
-"""NSW Rural Fire Service Incidents feed."""
+"""Flight Air Map feed."""
 import logging
 from typing import Optional
 
@@ -11,7 +11,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class FlightAirMapFeed(GeoJsonFeed):
-    """NSW Rural Fire Services Incidents feed."""
+    """Flight Air Map feed."""
 
     def __init__(self,
                  websession: ClientSession,
@@ -20,8 +20,8 @@ class FlightAirMapFeed(GeoJsonFeed):
                  filter_radius=None):
         """Initialise this service."""
         super().__init__(websession,
-                         url,
-                         home_coordinates,
+                         url=url,
+                         home_coordinates=home_coordinates,
                          filter_radius=filter_radius)
 
     def __repr__(self):
