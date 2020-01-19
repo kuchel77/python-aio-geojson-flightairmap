@@ -1,15 +1,10 @@
 """Flight Air Map feed entry."""
-import pytz
-import calendar
 from datetime import datetime
-from time import strptime
 
 import logging
-import re
-from typing import Optional
-from aio_geojson_client.feed_entry import FeedEntry
+import pytz
 
-import aio_geojson_flightairmap.consts
+from aio_geojson_client.feed_entry import FeedEntry
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -23,42 +18,42 @@ class FlightAirMapFeedEntry(FeedEntry):
     @property
     def title(self) -> str:
         """Return the title of this entry."""
-        return self._search_in_properties(ATTR_FLIGHT_CODE)
+        return self._search_in_properties("c")
 
     @property
     def external_id(self) -> str:
         """Return the title of this entry."""
-        return self._search_in_properties(ATTR_ID)
-  
+        return self._search_in_properties("fi")
+
     @property
     def flight_num(self) -> str:
         """Return the title of this entry."""
-        return self._search_in_properties(ATTR_FLIGHT_CODE )
+        return self._search_in_properties("c")
 
     @property
     def aircraft_registration(self) -> str:
         """Return the y of this entry."""
-        return self._search_in_properties(ATTR_AIRCRAFT_REGISTRATION)
+        return self._search_in_properties("reg")
 
     @property
     def aircraft_type(self) -> str:
         """Return the location of this entry."""
-        return self._search_in_description(ATTR_AIRCRAFT_TYPE)
+        return self._search_in_properties("ai")
 
     @property
     def departure_airport(self) -> str:
         """Return the y of this entry."""
-        return self._search_in_properties(ATTR_DEPARTURE_AIRPORT)
+        return self._search_in_properties("dac")
 
     @property
     def arrival_airport(self) -> str:
         """Return the location of this entry."""
-        return self._search_in_description(ATTR_ARRIVAL_AIRPORT)       
+        arrival_airport = self._search_in_properties("aac")
+        return arrival_airport
 
     @property
     def publication_date(self) -> datetime:
         """Return the publication date of this entry."""
-        current_time = datetime.now().strftime("%d/%m/%Y %I:%M:%S %p")
-        date_struct = strptime(current_time, "%d/%m/%Y %I:%M:%S %p")
-        publication_date = datetime.fromtimestamp(calendar.timegm(date_struct), tz=pytz.utc)
+        last_update = int(self._search_in_properties("lu"))
+        publication_date = datetime.fromtimestamp(last_update, tz=pytz.utc)
         return publication_date

@@ -4,7 +4,6 @@ from aiohttp import ClientSession
 
 from .feed import FlightAirMapFeed
 
-
 class FlightAirMapFeedManager(FeedManagerBase):
     """Feed Manager for Flight Air Map feed."""
 
@@ -13,13 +12,13 @@ class FlightAirMapFeedManager(FeedManagerBase):
                  generate_callback,
                  update_callback,
                  remove_callback,
-                 coordinates,
-                 url,
+                 coordinates=None,
                  filter_radius=None):
         """Initialize the Flight Air Map Manager."""
         feed = FlightAirMapFeed(
             websession,
-            url=url, home_coordinates=coordinates,
+            coordinates=coordinates,
+            url="http://192.168.0.200/FlightAirMap/live/geojson",
             filter_radius=filter_radius)
         super().__init__(feed,
                          generate_callback,

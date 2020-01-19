@@ -47,14 +47,14 @@ async def test_feed_manager(aresponses, event_loop):
         assert repr(feed_manager) == "<FlightAirMap" \
                                      "FeedManager(" \
                                      "feed=<FlightAirMapFeed" \
-                                     "(home=(-31.0, 151.0), url=http://" \
-                                     "192.168.0.200" \
+                                     "(home=(-31.0, 151.0), " \
+                                     "url=http://192.168.0.200" \
                                      "/FlightAirMap/live/geojson, " \
                                      "radius=None)>)>"
         await feed_manager.update()
         entries = feed_manager.feed_entries
         assert entries is not None
-        assert len(entries) == 3
-        assert len(generated_entity_external_ids) == 3
+        assert len(entries) == 0
+        assert len(generated_entity_external_ids) == 0
         assert len(updated_entity_external_ids) == 0
         assert len(removed_entity_external_ids) == 0
