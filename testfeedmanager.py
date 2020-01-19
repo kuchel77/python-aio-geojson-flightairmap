@@ -1,9 +1,7 @@
 """ Test Feed Manager """
 import asyncio
 from aiohttp import ClientSession
-from aio_geojson_flightairmap import FlightAirMapFeedManager
-
-
+from aio_geojson_flightairmap.feed_manager import FlightAirMapFeedManager
  
 async def _generate_entity(self, external_id):
         """Generate new entity."""
@@ -31,7 +29,8 @@ async def main() -> None:
             _update_entity,
             _remove_entity,
             (-33.0, 150.0),
-            filter_radius=20000)
+            "http://192.168.0.200/FlightAirMap/live/geojson",
+            20000)
 
         status, entries = await _feed_manager._feed.update()
         print(status)

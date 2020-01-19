@@ -13,13 +13,14 @@ class FlightAirMapFeedManager(FeedManagerBase):
                  update_callback,
                  remove_callback,
                  coordinates=None,
+                 feed_url=None,
                  filter_radius=None):
         """Initialize the Flight Air Map Manager."""
         feed = FlightAirMapFeed(
             websession,
-            coordinates=coordinates,
-            url="http://192.168.0.200/FlightAirMap/live/geojson",
-            filter_radius=filter_radius)
+            coordinates,
+            feed_url,
+            filter_radius)
         super().__init__(feed,
                          generate_callback,
                          update_callback,

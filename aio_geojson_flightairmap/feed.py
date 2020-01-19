@@ -5,7 +5,7 @@ from typing import Optional
 from aio_geojson_client.feed import GeoJsonFeed
 from aiohttp import ClientSession
 
-from aio_geojson_client.feed_entry import FlightAirMapFeedEntry
+from aio_geojson_flightairmap.feed_entry import FlightAirMapFeedEntry
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class FlightAirMapFeed(GeoJsonFeed):
                  filter_radius=None):
         """Initialise this service."""
         super().__init__(websession,                         
-                         home_coordinates=home_coordinates,
+                         coordinates,
                          url=url,
                          filter_radius=filter_radius)
 

@@ -4,8 +4,8 @@ import datetime
 import aiohttp
 import pytest
 
-from aio_geojson_flightairmap.feed_manager import \
-    FlightAirMapFeedManager
+from aio_geojson_flightairmap.feed_manager \
+    import FlightAirMapFeedManager
 from tests.utils import load_fixture
 
 
