@@ -39,7 +39,7 @@ async def main() -> None:
             print(entry.publication_date)
             print(entry.coordinates)
             print(entry.flight_num)
-            print(entry.aircraft_registration)
+            print(entry.aircraft_icao)
             print(entry.squawk)
 
 asyncio.get_event_loop().run_until_complete(main())
