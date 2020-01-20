@@ -50,10 +50,32 @@ class FlightAirMapFeedEntry(FeedEntry):
         """Return the location of this entry."""
         arrival_airport = self._search_in_properties("aac")
         return arrival_airport
+    
+    @property
+    def altitude(self) -> str:
+        """Return the location of this entry."""
+        altitude = float(self._search_in_properties("a"))*100
+        return altitude
+
+    @property
+    def squawk(self) -> str:
+        """Return the location of this entry."""
+        squawk = self._search_in_properties("sq")
+        return squawk
+   
+    @property
+    def heading(self) -> str:
+        """Return the location of this entry."""
+        squawk = self._search_in_properties("h")
+        if squawk is not None:
+            return squawk
+        return None
 
     @property
     def publication_date(self) -> datetime:
         """Return the publication date of this entry."""
-        last_update = int(self._search_in_properties("lu"))
-        publication_date = datetime.fromtimestamp(last_update, tz=pytz.utc)
-        return publication_date
+        last_update = self._search_in_properties("lu")
+        if last_update is not None:
+            publication_date = datetime.fromtimestamp(int(last_update), tz=pytz.utc)
+            return publication_date 
+        return None
