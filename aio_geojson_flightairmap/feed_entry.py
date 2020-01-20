@@ -38,7 +38,7 @@ class FlightAirMapFeedEntry(FeedEntry):
     @property
     def aircraft_icao(self) -> str:
         """Return the y of this entry."""
-        return self._search_in_properties("ai")
+        return self._search_in_properties("aircraft_icao")
 
     @property
     def aircraft_type(self) -> str:
