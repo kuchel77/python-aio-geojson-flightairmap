@@ -60,7 +60,7 @@ class FlightAirMapFeedEntry(FeedEntry):
     def altitude(self) -> str:
         """Return the location of this entry."""
         if self._search_in_properties("a") is not None:
-            altitude = int(self._search_in_properties("a"))*100
+            altitude = float(self._search_in_properties("a"))*100
         else:
             altitude = 0
         return altitude
