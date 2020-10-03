@@ -59,7 +59,10 @@ class FlightAirMapFeedEntry(FeedEntry):
     @property
     def altitude(self) -> str:
         """Return the location of this entry."""
-        altitude = float(self._search_in_properties("a"))*100
+        if self._search_in_properties("a") is not None:
+            altitude = int(self._search_in_properties("a"))*100
+        else:
+            altitude = 0
         return altitude
 
     @property
@@ -71,9 +74,9 @@ class FlightAirMapFeedEntry(FeedEntry):
     @property
     def heading(self) -> str:
         """Return the location of this entry."""
-        squawk = self._search_in_properties("h")
-        if squawk is not None:
-            return squawk
+        heading = self._search_in_properties("h")
+        if heading is not None:
+            return heading
         return None
 
     @property
