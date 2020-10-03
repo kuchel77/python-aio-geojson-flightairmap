@@ -45,7 +45,7 @@ class FlightAirMapFeed(GeoJsonFeed):
             dates = sorted(filter(
                 None, [entry.publication_date for entry in feed_entries]),
                            reverse=True)
-            if dates is not None:
+            if len(dates) > 0:
                 return dates[0]
         return None
 
